@@ -1,0 +1,22 @@
+################## My Make File #######################
+CC=g++
+OPT_FLAG=O3
+FILE_NAME=nn
+FILE_EXTENTION=.cpp
+STD=c++11
+LIB=-ltiff -lgraph -lm
+BACK_UP_FILE_NAME=date +%s
+
+compile: $(CC) -std=$(STD) $(FILE_NAME) $(FILE_NAME)$(FILE_EXTENTION) $(LIB)
+#print : echo "hello"
+#compile: $(CC) -std=$(STD) $(FILE_NAME) $(FILE_NAME)$(FILE_EXTENTION) $(LIB)
+#exict: ./$(FILE_NAME)
+#make_back_up: cp * ../back_up/
+#clear_ex: rm $(FILE_NAME)
+#clear_all: tar -czvf ../back_up/$(BACK_UP_FILE_NAME).tar.gz *;rm *
+compiling_with_profiling: 
+	$(CC) -std=$(STD)   -$(OPT_FlAG) -pg -o $(FILE_NAME)  $(FILE_NAME)$(FILE_EXTENTION) $(LIB)
+run_by_gprof_profile: 
+	gprof $(FILE_NAME) gmon.out -p
+run_by_gprof_call_graph: 
+	gprof $(FILE_NAME) gmon.out -q
